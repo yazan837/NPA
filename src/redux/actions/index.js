@@ -1,5 +1,5 @@
-import home from './groups/home';
+import teams from './groups/teams';
 
 export default {
-  ...home,
+  ...teams,
 };

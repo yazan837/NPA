@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
 
-import home from './groups/home';
+import team from './groups/teams';
 
 const appReducers = combineReducers({
-  home,
+  team,
 });
 
 export default (state, action) => {

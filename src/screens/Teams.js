@@ -2,18 +2,17 @@ import React from 'react';
 import {StatusBar, View, Text, SafeAreaView} from 'react-native';
 
 import theme from '../theme';
-import reacttotron from '../redux/Reactotron';
 
-class Home extends React.Component {
+class Teams extends React.Component {
   render() {
     return (
       <SafeAreaView>
         <View>
-          <Text>Home</Text>
+          <Text>Teams</Text>
         </View>
       </SafeAreaView>
     );
   }
 }
 
-export default Home;
+export default Teams;
