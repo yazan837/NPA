@@ -1,19 +1,32 @@
 import React from 'react';
-import {StatusBar, View, Text, SafeAreaView} from 'react-native';
 
-import theme from '../theme';
-import reacttotron from '../redux/Reactotron';
+import Page from '../components/Page';
 
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import GamesPage from '../components/GamesPage';
+import actions from '../redux/actions';
+
+const {fetchGames} = actions;
 class Games extends React.Component {
+  componentDidMount() {
+    this.props.fetchGames();
+  }
   render() {
     return (
-      <SafeAreaView>
-        <View>
-          <Text>Games</Text>
-        </View>
-      </SafeAreaView>
+      <Page isLoading={this.props.isFethingGame}>
+        <GamesPage data={this.props.game} />
+      </Page>
     );
   }
 }
 
-export default Games;
+const mapStateToProps = state => ({
+  isFethingGame: state.game.isFethingGames,
+  game: state.game.games,
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({fetchGames}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Games);
