@@ -10,40 +10,45 @@ import {
 } from 'react-native';
 import theme from '../theme';
 import {withNavigation} from 'react-navigation';
+import reactotron from 'reactotron-react-native';
 
 class TeamsPage extends React.Component {
   renderItem = ({item}) => {
     return (
-      <View style={{flex: 1}}>
-        {/* <TouchableOpacity
-          style={[styles.containerStyle, {backgroundColor: item.bg_color}]}
-          onPress={() =>
-            this.setState({isModalVisible: true, RewardsId: item.id})
-          }>
-          <View style={styles.battelcontainer}>
-            <Image
-              source={{
-                uri: 'http://services.larsa.io/files/file/' + item.image,
-              }}
-              style={{
-                height: 60 * theme.consts.BW,
-                width: 60 * theme.consts.BW,
-              }}
-              resizeMode="contain"
-            />
-          </View>
-          <View
+      <TouchableOpacity
+        style={styles.containerStyle}
+        onPress={() => this.setState({RewardsId: item.id})}>
+        <View style={styles.battelcontainer}>
+          <Image
+            source={require('../../assets/images/basketball.jpg')}
             style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginBottom: 25 * theme.consts.BW,
-            }}>
-            <Text style={{color: '#fff', fontSize: 16 * theme.consts.BW}}>
-              {item.title}
-            </Text>
-          </View>
-        </TouchableOpacity> */}
-      </View>
+              height: 60 * theme.consts.BW,
+              width: 60 * theme.consts.BW,
+            }}
+            resizeMode="contain"
+          />
+        </View>
+
+        <View
+          style={{
+            height: '90%',
+            justifyContent: 'space-between',
+            width: 300 * theme.consts.BW,
+          }}>
+          <Text style={{color: 'red', fontSize: 20 * theme.consts.BW}}>
+            city: {item.city}
+          </Text>
+          <Text style={{color: 'red', fontSize: 20 * theme.consts.BW}}>
+            conference :{item.conference}
+          </Text>
+          <Text style={{color: 'red', fontSize: 20 * theme.consts.BW}}>
+            full name: {item.full_name}
+          </Text>
+          <Text style={{color: 'red', fontSize: 20 * theme.consts.BW}}>
+            name :{item.name}
+          </Text>
+        </View>
+      </TouchableOpacity>
     );
   };
 
@@ -61,7 +66,7 @@ class TeamsPage extends React.Component {
           <Text
             style={{
               fontSize: 22 * theme.consts.BW,
-              color: '#8DC965',
+              color: '#312F2F',
               textAlign: 'center',
               fontWeight: 'bold',
             }}>
@@ -69,31 +74,6 @@ class TeamsPage extends React.Component {
           </Text>
         </View>
 
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 20 * theme.consts.BW,
-          }}>
-          <Text
-            style={{
-              fontSize: 14 * theme.consts.BW,
-              textAlign: 'center',
-              color: '#808080',
-            }}>
-            Select from one of the below categories,
-          </Text>
-        </View>
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
-          <Text
-            style={{
-              fontSize: 14 * theme.consts.BW,
-              textAlign: 'center',
-              color: '#808080',
-            }}>
-            and pick the reward
-          </Text>
-        </View>
         <FlatList
           data={data}
           renderItem={this.renderItem}
@@ -117,17 +97,19 @@ const styles = StyleSheet.create({
   },
   containerStyle: {
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     margin: 20 * theme.consts.BW,
-    width: 175 * theme.consts.BW,
-    height: 140 * theme.consts.BW,
-    // backgroundColor: '#d9c755',
+    width: '90%',
+    height: 120 * theme.consts.BW,
+    flexDirection: 'row',
+    borderWidth: 0.5,
+    borderColor: 'grey',
   },
   battelcontainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60 * theme.consts.BW,
-    width: 60 * theme.consts.BW,
+    height: 75 * theme.consts.BW,
+    width: 75 * theme.consts.BW,
   },
   text: {
     fontSize: 20,

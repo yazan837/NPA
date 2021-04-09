@@ -26,7 +26,7 @@ const TabNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: ({tintColor}) => (
           <BottomTabLabel style={[styles.label, {color: tintColor}]}>
-            {'Home'}
+            {'Players'}
           </BottomTabLabel>
         ),
         tabBarIcon: ({tintColor}) => (
@@ -78,18 +78,18 @@ const TabNavigator = createBottomTabNavigator(
     navigationOptions: ({navigation}) => {
       if (navigation.state.index === 0) {
         return {
-          header: () => <Header title={'Home'} MenuIcon />,
-          animationEnabled: true,
+          header: () => <Header title={'Players'} MenuIcon />,
+          animationEnabled: false,
         };
       } else if (navigation.state.index === 1) {
         return {
           header: () => <Header title={'Teams'} />,
-          animationEnabled: true,
+          animationEnabled: false,
         };
       } else if (navigation.state.index === 2) {
         return {
           header: () => <Header title={'Games'} />,
-          animationEnabled: true,
+          animationEnabled: false,
         };
       }
     },

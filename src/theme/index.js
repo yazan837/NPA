@@ -1,15 +1,15 @@
-import {Dimensions, Platform} from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage'
+import {Dimensions, Platform} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
-const {width, height} = Dimensions.get('window')
+const {width, height} = Dimensions.get('window');
 
 const utils = {
   fill: {width: '100%', height: '100%'},
   center: {alignItems: 'center', justifyContent: 'center'},
-}
+};
 
 const darkColors = {
-  backgroundColor: '#00a650',
+  backgroundColor: '#107ae3',
   first: '#312F2F',
   statusBarStyle: 'light-content',
   backgroundBarHome: 'green',
@@ -24,9 +24,9 @@ const darkColors = {
   homePageIcon: '#828282',
   tintColor: '#312F2F',
   button: '#C03823',
-}
+};
 
-const consts = {BW: width / 420, BH: height / 910}
+const consts = {BW: width / 420, BH: height / 910};
 
 const shadow = {
   ...Platform.select({
@@ -39,7 +39,7 @@ const shadow = {
       elevation: 1,
     },
   }),
-}
+};
 
 const themeObject = {
   utils,
@@ -47,15 +47,13 @@ const themeObject = {
   currentTheme: 'dark',
   consts,
   shadow,
-}
+};
 
 export const initTheme = async () => {
-  let theme = await AsyncStorage.getItem('@theme')
+  let theme = await AsyncStorage.getItem('@theme');
   if (theme) {
-    themeObject.currentTheme = theme
+    themeObject.currentTheme = theme;
   }
-}
+};
 
-
-
-export default themeObject
+export default themeObject;

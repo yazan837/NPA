@@ -1,5 +1,6 @@
 import actions from '../../actions/index';
 import {combineReducers} from 'redux';
+import reactotron from 'reactotron-react-native';
 
 const {FETCH_TEAMS, COMPLETE_FETCH_TEAMS} = actions;
 

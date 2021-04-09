@@ -5,7 +5,7 @@ import reactotron from 'reactotron-react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Alert} from 'react-native';
 const {
-  completeFetchTeam,
+  completeFetchTeams,
   FETCH_TEAMS,
   completeFetchGames,
   FETCH_GAMES,
@@ -18,10 +18,10 @@ function* performFetchTeams({data}) {
 
     reactotron.log('result', result);
     if (result.networkSuccess) {
-      yield put(completeFetchTeam({data: result}));
-    } else yield put(completeFetchTeam({data: []}));
+      yield put(completeFetchTeams({data: result.data}));
+    } else yield put(completeFetchTeams({data: []}));
   } catch {
-    yield put(completeFetchTeam({data: []}));
+    yield put(completeFetchTeams({data: []}));
     return;
   }
 }
@@ -36,7 +36,7 @@ function* performFetchGames({data}) {
 
     reactotron.log('result', result);
     if (result.networkSuccess) {
-      yield put(completeFetchGames({data: result}));
+      yield put(completeFetchGames({data: result.data}));
     } else yield put(completeFetchGames({data: []}));
   } catch {
     yield put(completeFetchGames({data: []}));

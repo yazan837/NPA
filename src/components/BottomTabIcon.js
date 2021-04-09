@@ -1,13 +1,13 @@
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
+import {Image, StyleSheet} from 'react-native';
 
 import theme from '../theme';
 
-export default ({ source, tintColor }) => (
+export default ({source, tintColor}) => (
   <Image
-    resizeMode={'contain'}
+    resizeMode={'center'}
     source={source}
-    style={[styles.image, { tintColor }]}
+    style={[styles.image, {tintColor}]}
   />
 );
 

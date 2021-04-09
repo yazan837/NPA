@@ -1,24 +1,26 @@
-export const URL = 'https://balldontlie.io/api';
+export const URL = 'https://balldontlie.io';
 import store from '../store';
 import reactotron from 'reactotron-react-native';
+
 export const buildHeaders = () => {
   let headers = {
-    Connection: 'keep-alive',
-    'Accept-Encoding': 'gzip, deflate, br',
-    Accept: '*/*',
+    'Content-Type': 'application/json',
   };
+  return headers;
 };
-const fetchData = async (endpoint, body) => {
+const fetchData = async (endpoint, body, data) => {
   const url = `${URL}${endpoint}`;
   const headers = buildHeaders();
   return fetch(url, {
     method: 'GET',
     headers,
+    body: JSON.stringify(body),
   })
     .then(res => res.json())
     .then(res => {
+      reactotron.log('resultapi', res);
       if (res != null) {
-        return {networkSuccess: true, formData: res};
+        return {networkSuccess: true, data: res.data};
       } else {
         return {networkSuccess: false, ...res};
       }
@@ -26,24 +28,4 @@ const fetchData = async (endpoint, body) => {
     .catch(e => ({networkSuccess: false}));
 };
 
-const postData = async (endpoint, body, auth, passwordSetup) => {
-  const url = `${URL}${endpoint}`;
-  const headers = buildHeaders();
-  return fetch(url, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify(body),
-  })
-    .then(res => processResponse(res, auth, passwordSetup))
-    .then(res => {
-      return {
-        networkSuccess: res.statusCode == 200,
-        formData: res.data,
-        token: auth ? res.token : '',
-      };
-    })
-
-    .catch(e => ({networkSuccess: false}));
-};
-
-export {fetchData, postData};
+export {fetchData};

@@ -13,7 +13,6 @@ class Teams extends React.Component {
     this.props.fetchTeams();
   }
   render() {
-    reactotron.log('datta', this.props);
     return (
       <Page isLoading={this.props.isFethingTeam}>
         <TeamsPage data={this.props.teams} />
@@ -24,7 +23,6 @@ class Teams extends React.Component {
 
 const mapStateToProps = state => ({
   isFethingTeam: state.team.isFethingTeams,
-
   teams: state.team.teams,
 });
 

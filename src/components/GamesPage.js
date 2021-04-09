@@ -10,21 +10,22 @@ import {
 } from 'react-native';
 import theme from '../theme';
 import {withNavigation} from 'react-navigation';
-
+import reactotron from 'reactotron-react-native';
+import Moment from 'moment';
 class GamesPage extends React.Component {
   renderItem = ({item}) => {
     return (
-      <View style={{flex: 1}}>
-        {/* <TouchableOpacity
-          style={[styles.containerStyle, {backgroundColor: item.bg_color}]}
-          onPress={() =>
-            this.setState({isModalVisible: true, RewardsId: item.id})
-          }>
+      <View
+        style={{alignItems: 'center', borderWidth: 0.5, borderColor: 'grey'}}>
+        <View>
+          <Text>{Moment(item.date).format('d MMM y')}</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.containerStyle}
+          onPress={() => this.setState({RewardsId: item.id})}>
           <View style={styles.battelcontainer}>
             <Image
-              source={{
-                uri: 'http://services.larsa.io/files/file/' + item.image,
-              }}
+              source={require('../../assets/images/basketball.jpg')}
               style={{
                 height: 60 * theme.consts.BW,
                 width: 60 * theme.consts.BW,
@@ -32,17 +33,55 @@ class GamesPage extends React.Component {
               resizeMode="contain"
             />
           </View>
+
           <View
             style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginBottom: 25 * theme.consts.BW,
+              height: '90%',
+              justifyContent: 'space-around',
             }}>
-            <Text style={{color: '#fff', fontSize: 16 * theme.consts.BW}}>
-              {item.title}
+            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
+              home_team: {item.home_team.city}
+            </Text>
+            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
+              conference :{item.home_team.conference}
+            </Text>
+            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
+              name :{item.home_team.name}
+            </Text>
+            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
+              score :{item.home_team_score}
             </Text>
           </View>
-        </TouchableOpacity> */}
+          <View
+            style={{
+              height: '90%',
+              justifyContent: 'space-around',
+            }}>
+            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
+              visitor_team: {item.visitor_team.city}
+            </Text>
+            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
+              conference :{item.visitor_team.conference}
+            </Text>
+
+            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
+              name :{item.visitor_team.name}
+            </Text>
+            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
+              score :{item.visitor_team_score}
+            </Text>
+          </View>
+          <View style={styles.battelcontainer}>
+            <Image
+              source={require('../../assets/images/basketball.jpg')}
+              style={{
+                height: 60 * theme.consts.BW,
+                width: 60 * theme.consts.BW,
+              }}
+              resizeMode="contain"
+            />
+          </View>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -61,7 +100,7 @@ class GamesPage extends React.Component {
           <Text
             style={{
               fontSize: 22 * theme.consts.BW,
-              color: '#8DC965',
+              color: '#312F2F',
               textAlign: 'center',
               fontWeight: 'bold',
             }}>
@@ -69,31 +108,6 @@ class GamesPage extends React.Component {
           </Text>
         </View>
 
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 20 * theme.consts.BW,
-          }}>
-          <Text
-            style={{
-              fontSize: 14 * theme.consts.BW,
-              textAlign: 'center',
-              color: '#808080',
-            }}>
-            Select from one of the below categories,
-          </Text>
-        </View>
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
-          <Text
-            style={{
-              fontSize: 14 * theme.consts.BW,
-              textAlign: 'center',
-              color: '#808080',
-            }}>
-            and pick the reward
-          </Text>
-        </View>
         <FlatList
           data={data}
           renderItem={this.renderItem}
@@ -117,17 +131,17 @@ const styles = StyleSheet.create({
   },
   containerStyle: {
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     margin: 20 * theme.consts.BW,
-    width: 175 * theme.consts.BW,
-    height: 140 * theme.consts.BW,
-    // backgroundColor: '#d9c755',
+    width: '90%',
+    height: 120 * theme.consts.BW,
+    flexDirection: 'row',
   },
   battelcontainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60 * theme.consts.BW,
-    width: 60 * theme.consts.BW,
+    height: 75 * theme.consts.BW,
+    width: 75 * theme.consts.BW,
   },
   text: {
     fontSize: 20,

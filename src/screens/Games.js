@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import GamesPage from '../components/GamesPage';
 import actions from '../redux/actions';
+import reactotron from 'reactotron-react-native';
 
 const {fetchGames} = actions;
 class Games extends React.Component {
