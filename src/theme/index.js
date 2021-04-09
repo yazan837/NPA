@@ -9,7 +9,7 @@ const utils = {
 };
 
 const darkColors = {
-  backgroundColor: '#107ae3',
+  backgroundColor: '#23353D',
   first: '#312F2F',
   statusBarStyle: 'light-content',
   backgroundBarHome: 'green',

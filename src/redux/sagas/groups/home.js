@@ -1,5 +1,5 @@
 import {put, takeLatest, call, select} from 'redux-saga/effects';
-import {fetchTeams, fetchGames} from '../../network/General';
+import {fetchTeams, fetchGames, fetchPlayers} from '../../network/General';
 import actions from '../../actions';
 import reactotron from 'reactotron-react-native';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -9,6 +9,8 @@ const {
   FETCH_TEAMS,
   completeFetchGames,
   FETCH_GAMES,
+  completeFetchPlayers,
+  FETCH_PLAYERS,
 } = actions;
 
 //functions for teams
@@ -46,4 +48,22 @@ function* performFetchGames({data}) {
 
 export function* watchFetchGames() {
   yield takeLatest(FETCH_GAMES, performFetchGames);
+}
+//functions for players
+function* performFetchPlayers({data}) {
+  try {
+    const result = yield call(fetchPlayers, data);
+
+    reactotron.log('result', result);
+    if (result.networkSuccess) {
+      yield put(completeFetchPlayers({data: result.data}));
+    } else yield put(completeFetchPlayers({data: []}));
+  } catch {
+    yield put(completeFetchPlayers({data: []}));
+    return;
+  }
+}
+
+export function* watchFetchPlayers() {
+  yield takeLatest(FETCH_PLAYERS, performFetchPlayers);
 }

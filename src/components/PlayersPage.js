@@ -12,28 +12,17 @@ import theme from '../theme';
 import {withNavigation} from 'react-navigation';
 import reactotron from 'reactotron-react-native';
 
-class TeamsPage extends React.Component {
+class Players extends React.Component {
   renderItem = ({item}) => {
     return (
       <TouchableOpacity
         style={styles.containerStyle}
         onPress={() => this.setState({RewardsId: item.id})}>
-        <View style={styles.battelcontainer}>
-          <Image
-            source={require('../../assets/images/basketball.jpg')}
-            style={{
-              height: 60 * theme.consts.BW,
-              width: 60 * theme.consts.BW,
-            }}
-            resizeMode="contain"
-          />
-        </View>
-
         <View
           style={{
-            height: '90%',
+            height: '100%',
             justifyContent: 'space-between',
-            width: 100 * theme.consts.BW,
+            width: 250 * theme.consts.BW,
           }}>
           <Text
             style={{
@@ -41,24 +30,31 @@ class TeamsPage extends React.Component {
               fontSize: 20 * theme.consts.BW,
               fontWeight: 'bold',
             }}>
-            {item.city}
+            name: {item.first_name}
           </Text>
           <Text style={{color: '#23353D', fontSize: 20 * theme.consts.BW}}>
-            {item.conference}
+            position: {item.position}
+          </Text>
+          <Text style={{color: '#23353D', fontSize: 20 * theme.consts.BW}}>
+            height: {item.height_feet}
+          </Text>
+          <Text style={{color: '#23353D', fontSize: 20 * theme.consts.BW}}>
+            weight: {item.weight_pounds}
+          </Text>
+          <Text style={{color: '#23353D', fontSize: 20 * theme.consts.BW}}>
+            team: {item.team.full_name}
           </Text>
         </View>
-        <View
-          style={{
-            height: '90%',
-            justifyContent: 'space-between',
-            width: 100 * theme.consts.BW,
-          }}>
-          <Text style={{color: '#23353D', fontSize: 20 * theme.consts.BW}}>
-            {item.full_name}
-          </Text>
-          <Text style={{color: '#23353D', fontSize: 20 * theme.consts.BW}}>
-            {item.name}
-          </Text>
+        <View style={styles.battelcontainer}>
+          <Image
+            source={require('../../assets/images/basketplayer.jpg')}
+            style={{
+              height: 70 * theme.consts.BW,
+              width: 70 * theme.consts.BW,
+              borderRadius: 25,
+            }}
+            resizeMode="center"
+          />
         </View>
       </TouchableOpacity>
     );
@@ -69,23 +65,6 @@ class TeamsPage extends React.Component {
 
     return (
       <View style={{flex: 1}}>
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 15 * theme.consts.BW,
-          }}>
-          <Text
-            style={{
-              fontSize: 22 * theme.consts.BW,
-              color: '#312F2F',
-              textAlign: 'center',
-              fontWeight: 'bold',
-            }}>
-            LIST OF TEAMS
-          </Text>
-        </View>
-
         <FlatList
           data={data}
           renderItem={this.renderItem}
@@ -96,7 +75,7 @@ class TeamsPage extends React.Component {
   }
 }
 
-export default withNavigation(TeamsPage);
+export default withNavigation(Players);
 
 const styles = StyleSheet.create({
   text: {
@@ -112,11 +91,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     margin: 20 * theme.consts.BW,
     width: '90%',
-    height: 120 * theme.consts.BW,
+    height: 150 * theme.consts.BW,
     flexDirection: 'row',
     borderWidth: 0.5,
     borderColor: 'grey',
     borderRadius: 25,
+    padding: 10,
   },
   battelcontainer: {
     justifyContent: 'center',

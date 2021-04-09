@@ -2,16 +2,13 @@ import React from 'react';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import {createDrawerNavigator} from 'react-navigation-drawer';
+
 import BottomTabIcon from '../components/BottomTabIcon';
 import BottomTabLabel from '../components/BottomTabLabel';
 // screens
 import Home from '../screens/Home';
 import Games from '../screens/Games';
 import Teams from '../screens/Teams';
-
-// // side menu drawer
-import Drawyer from '../components/Drawyer';
 
 import {StyleSheet} from 'react-native';
 import theme from '../theme';
@@ -96,11 +93,11 @@ const TabNavigator = createBottomTabNavigator(
     initialRouteName: 'Home',
     tabBarOptions: {
       activeTintColor: '#fff',
-      activeBackgroundColor: '#004987',
-      inactiveBackgroundColor: '#107ae3',
-      inactiveTintColor: '#f2f2f2',
+      activeBackgroundColor: '#5B6B74',
+      inactiveBackgroundColor: '#23353D',
+      inactiveTintColor: '#fff',
       style: {
-        height: 75 * theme.consts.BW,
+        height: 50 * theme.consts.BW,
         alignItems: 'center',
       },
     },
@@ -128,12 +125,8 @@ const AppNavigator = createStackNavigator({
   },
 });
 
-const DrawyerNavigator = createDrawerNavigator({
-  AppNavigator: {screen: AppNavigator},
-});
-
 const appNavigator = createSwitchNavigator({
-  App: {screen: DrawyerNavigator},
+  App: {screen: AppNavigator},
 });
 
 const Navigator = createAppContainer(appNavigator);
@@ -144,7 +137,7 @@ export default () => <Navigator ref={makeRef} />;
 const styles = StyleSheet.create({
   icon: {height: 20, width: 20, tintColor: theme.colors.primaryColor},
   label: {
-    fontSize: 16,
+    fontSize: 20,
     textAlign: 'center',
     marginVertical: 7,
   },

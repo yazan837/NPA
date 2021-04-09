@@ -16,9 +16,17 @@ class GamesPage extends React.Component {
   renderItem = ({item}) => {
     return (
       <View
-        style={{alignItems: 'center', borderWidth: 0.5, borderColor: 'grey'}}>
-        <View>
-          <Text>{Moment(item.date).format('d MMM y')}</Text>
+        style={{
+          alignItems: 'center',
+          borderWidth: 0.5,
+          borderColor: 'grey',
+          borderRadius: 25,
+          margin: 10,
+        }}>
+        <View style={{marginTop: 15}}>
+          <Text style={{fontSize: 16}}>
+            {Moment(item.date).format('d MMM y')}
+          </Text>
         </View>
         <TouchableOpacity
           style={styles.containerStyle}
@@ -39,17 +47,56 @@ class GamesPage extends React.Component {
               height: '90%',
               justifyContent: 'space-around',
             }}>
-            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
-              home_team: {item.home_team.city}
+            <Text style={{color: '#23353D', fontSize: 12 * theme.consts.BW}}>
+              {item.home_team.city}
             </Text>
-            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
-              conference :{item.home_team.conference}
+            <Text style={{color: '#23353D', fontSize: 12 * theme.consts.BW}}>
+              {item.home_team.conference}
             </Text>
-            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
-              name :{item.home_team.name}
+            <Text style={{color: '#23353D', fontSize: 12 * theme.consts.BW}}>
+              {item.home_team.name}
             </Text>
-            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
-              score :{item.home_team_score}
+            <Text style={{color: '#23353D', fontSize: 12 * theme.consts.BW}}>
+              {item.home_team_score}
+            </Text>
+          </View>
+          <View
+            style={{
+              height: '90%',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                color: '#37804F',
+                fontSize: 14 * theme.consts.BW,
+                fontWeight: 'bold',
+              }}>
+              CITY
+            </Text>
+            <Text
+              style={{
+                color: '#37804F',
+                fontSize: 14 * theme.consts.BW,
+                fontWeight: 'bold',
+              }}>
+              CONFERENCE
+            </Text>
+            <Text
+              style={{
+                color: '#37804F',
+                fontSize: 14 * theme.consts.BW,
+                fontWeight: 'bold',
+              }}>
+              NAME
+            </Text>
+            <Text
+              style={{
+                color: '#37804F',
+                fontSize: 14 * theme.consts.BW,
+                fontWeight: 'bold',
+              }}>
+              SCORE
             </Text>
           </View>
           <View
@@ -57,18 +104,18 @@ class GamesPage extends React.Component {
               height: '90%',
               justifyContent: 'space-around',
             }}>
-            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
-              visitor_team: {item.visitor_team.city}
+            <Text style={{color: '#23353D', fontSize: 12 * theme.consts.BW}}>
+              {item.visitor_team.city}
             </Text>
-            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
-              conference :{item.visitor_team.conference}
+            <Text style={{color: '#23353D', fontSize: 12 * theme.consts.BW}}>
+              {item.visitor_team.conference}
             </Text>
 
-            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
-              name :{item.visitor_team.name}
+            <Text style={{color: '#23353D', fontSize: 12 * theme.consts.BW}}>
+              {item.visitor_team.name}
             </Text>
-            <Text style={{color: 'red', fontSize: 12 * theme.consts.BW}}>
-              score :{item.visitor_team_score}
+            <Text style={{color: '#23353D', fontSize: 12 * theme.consts.BW}}>
+              {item.visitor_team_score}
             </Text>
           </View>
           <View style={styles.battelcontainer}>
@@ -134,7 +181,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     margin: 20 * theme.consts.BW,
     width: '90%',
-    height: 120 * theme.consts.BW,
+    height: 80 * theme.consts.BW,
     flexDirection: 'row',
   },
   battelcontainer: {

@@ -94,8 +94,7 @@ const styles = StyleSheet.create({
     marginBottom: 10 * theme.consts.BW,
   },
   header: {
-    height:
-      Platform.OS == 'ios' ? 150 * theme.consts.BW : 100 * theme.consts.BW,
+    height: Platform.OS == 'ios' ? 150 * theme.consts.BW : 70 * theme.consts.BW,
     flexDirection: 'row',
     justifyContent: 'center',
     backgroundColor: theme.colors.backgroundColor,
